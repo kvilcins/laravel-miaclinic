@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksynergine=self.webpackChunksynergine||[]).push([[6417],{6417:(e,n,t)=>{t.r(n),t.d(n,{default:()=>IntInputs});var s=t(4967),a=t(9755);class IntInputs extends s.default{_bind(){return this._liveBindTo('[data-js="int-input"]',"keyup change",(e=>{let n=a(e.target),t=n.val().replace(/[^0-9]/g,"");t&&(t=parseInt(t),t>1e7&&(t=1e7)),n.val(t)})),!0}}}}]);

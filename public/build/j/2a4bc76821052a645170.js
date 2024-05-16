@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksynergine=self.webpackChunksynergine||[]).push([[1377],{1377:(r,e,s)=>{s.r(e),s.d(e,{default:()=>Errors});var t=s(4967),i=s(9755),n=s(6885);class Errors extends t.default{_init(){return this.$list=i('[data-js="errors-list"]'),!!this.$list.length}_bind(){return this._bindTo(i(n),"error:resolved",((r,e)=>{n.location.reload()})),!0}}}}]);
