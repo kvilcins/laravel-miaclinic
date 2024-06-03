@@ -7,28 +7,32 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
+ * Class Admin
  * 
  * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
+ * @property string|null $login
+ * @property string|null $fio
+ * @property string|null $password
+ * @property string|null $role
+ * @property bool $ban
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * 
+ * @property Collection|Error[] $errors
  *
  * @package App\Models
  */
-class User extends Model
+class Admin extends Model
 {
-	protected $table = 'users';
+	protected $table = 'admins';
 
 	protected $casts = [
-		'email_verified_at' => 'datetime'
+		'ban' => 'bool'
 	];
 
 	protected $hidden = [
@@ -37,10 +41,16 @@ class User extends Model
 	];
 
 	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
+		'login',
+		'fio',
 		'password',
+		'role',
+		'ban',
 		'remember_token'
 	];
+
+	public function errors()
+	{
+		return $this->hasMany(Error::class, 'resolver_id');
+	}
 }
