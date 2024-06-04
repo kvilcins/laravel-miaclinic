@@ -12,6 +12,6 @@ class ActivityController extends Controller
         $activities = Activity::all();
         dump($activities);
     
-        return view('activities.index', ['activities' => $activities]);
+        return view('index', ['activities' => $activities]);
     }
 }
