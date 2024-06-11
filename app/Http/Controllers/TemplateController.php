@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ActivityController extends Controller
+class TemplateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,16 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = \App\Models\Activity::all();
-        return view('index', ['activities' => $activities]);
+        $templates = \App\Models\Template::all();
+        return view('templates.templates', ['templates' => $templates]);
     }
+    
+    public function showTemplate($name)
+    {
+        $templates = \App\Models\Template::where('name', $name)->get();
+        return view('templates.' . $name, ['templates' => $templates]);
+    }
+    
     
     /**
      * Show the form for creating a new resource.

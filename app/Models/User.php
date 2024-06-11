@@ -7,19 +7,26 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
  * 
  * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
+ * @property string|null $name
+ * @property string|null $email
+ * @property string|null $password
+ * @property string|null $avatar
+ * @property string|null $profile
+ * @property bool $confirmed
+ * @property bool $ban
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * 
+ * @property Collection|OauthUser[] $oauth_users
+ * @property Collection|Review[] $reviews
  *
  * @package App\Models
  */
@@ -28,7 +35,8 @@ class User extends Model
 	protected $table = 'users';
 
 	protected $casts = [
-		'email_verified_at' => 'datetime'
+		'confirmed' => 'bool',
+		'ban' => 'bool'
 	];
 
 	protected $hidden = [
@@ -39,8 +47,21 @@ class User extends Model
 	protected $fillable = [
 		'name',
 		'email',
-		'email_verified_at',
 		'password',
+		'avatar',
+		'profile',
+		'confirmed',
+		'ban',
 		'remember_token'
 	];
+
+	public function oauth_users()
+	{
+		return $this->hasMany(OauthUser::class, 'local_user_id');
+	}
+
+	public function reviews()
+	{
+		return $this->hasMany(Review::class);
+	}
 }

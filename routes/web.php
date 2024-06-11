@@ -18,4 +18,8 @@ Route::get('/', function () {
 });
 
 // ActivityController
-Route::get('/activities', 'App\Http\Controllers\ActivityController@index');
+Route::get('/index', 'App\Http\Controllers\TemplateController@showTemplate');
+
+//TemplatesController
+Route::get('/templates', 'App\Http\Controllers\TemplateController@index');
+Route::get('/templates/{name}', 'App\Http\Controllers\TemplateController@showTemplate');

@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $published
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * 
+ * @property Template|null $template
  *
  * @package App\Models
  */
@@ -37,4 +39,9 @@ class HtmlSlider extends Model
 		'uuid',
 		'published'
 	];
+
+	public function template()
+	{
+		return $this->belongsTo(Template::class);
+	}
 }

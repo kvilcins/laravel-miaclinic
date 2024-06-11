@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
+ * @property Page $page
  * @property Collection|Affiliate[] $affiliates
  * @property Collection|Profession[] $professions
  * @property Collection|Work[] $works
@@ -57,6 +58,11 @@ class Employee extends Model
 		'working',
 		'priority'
 	];
+
+	public function page()
+	{
+		return $this->belongsTo(Page::class);
+	}
 
 	public function affiliates()
 	{
